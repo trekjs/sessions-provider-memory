@@ -2,7 +2,7 @@
 
 // Memory Provider.
 
-module.exports = class Memory extends Map {
+module.exports = class MemoryProvider extends Map {
 
   get (sid) {
     const sess = super.get(sid)
