@@ -12,12 +12,12 @@ $ npm install sessions-provider-memory --save
 
 ## Usage
 
-```js
-```
+See [sessions](https://github.com/trekjs/sessions).
 
 
 ## API
 
+Map Likes
 
 
 ## Badges

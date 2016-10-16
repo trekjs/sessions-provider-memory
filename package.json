@@ -1,6 +1,6 @@
 {
   "name": "sessions-provider-memory",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Sessions Memory Provider",
   "license": "MIT",
   "repository": "trekjs/sessions-provider-memory",
