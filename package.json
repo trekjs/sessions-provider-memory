@@ -30,7 +30,7 @@
     "test": "xo && nyc ava"
   },
   "devDependencies": {
-    "ava": "0.17",
+    "ava": "0.18",
     "babel-plugin-transform-async-to-generator": "6",
     "babel-plugin-transform-es2015-modules-commonjs": "6",
     "babel-preset-es2016": "6",
