@@ -1,6 +1,10 @@
-'use strict'
+/*!
+ * sessions-provider-memory
+ * Copyright(c) 2017 Fangdun Cai <cfddream@gmail.com> (https://fundon.me)
+ * MIT Licensed
+ */
 
-// Memory Provider.
+'use strict'
 
 module.exports = class MemoryProvider extends Map {
 
@@ -19,7 +23,7 @@ module.exports = class MemoryProvider extends Map {
 
   set (sid, sess, expires) {
     super.set(sid, sess)
-    // should clear old timer
+    // Should clear old timer
     if (sess.__timer__) {
       sess.cookie.expires = new Date() + expires
       clearTimeout(sess.__timer__)
