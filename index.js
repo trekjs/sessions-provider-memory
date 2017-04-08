@@ -36,4 +36,6 @@ module.exports = class MemoryProvider extends Map {
     })
   }
 
+  quit () {}
+
 }

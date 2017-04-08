@@ -1,6 +1,6 @@
 {
   "name": "sessions-provider-memory",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Sessions Memory Provider",
   "license": "MIT",
   "repository": "trekjs/sessions-provider-memory",
@@ -31,10 +31,6 @@
   },
   "devDependencies": {
     "ava": "0.19",
-    "babel-plugin-transform-async-to-generator": "6",
-    "babel-plugin-transform-es2015-modules-commonjs": "6",
-    "babel-preset-es2016": "6",
-    "babel-register": "6",
     "nyc": "10",
     "request": "2",
     "request-promise": "4",
@@ -42,16 +38,13 @@
     "xo": "0.18"
   },
   "ava": {
-    "concurrency": 5,
-    "require": "babel-register"
+    "concurrency": 5
   },
-  "babel": {
-    "plugins": [
-      "transform-async-to-generator",
-      "transform-es2015-modules-commonjs"
-    ],
-    "presets": [
-      "es2016"
+  "nyc": {
+    "reporter": [
+      "html",
+      "lcov",
+      "text"
     ]
   },
   "xo": {
@@ -92,12 +85,5 @@
       ],
       "yoda": 0
     }
-  },
-  "nyc": {
-    "reporter": [
-      "html",
-      "lcov",
-      "text"
-    ]
   }
 }
