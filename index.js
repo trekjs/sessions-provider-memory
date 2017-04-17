@@ -28,11 +28,15 @@ module.exports = class MemoryProvider extends Map {
       sess.cookie.expires = new Date() + expires
       clearTimeout(sess.__timer__)
     }
+
+    const timer = setTimeout(() => this.delete(sid), expires)
+    timer.unref()
+
     Object.defineProperty(sess, '__timer__', {
       configurable: true,
       enumerable: false,
       writable: true,
-      value: setTimeout(() => this.delete(sid), expires)
+      value: timer
     })
   }
 
