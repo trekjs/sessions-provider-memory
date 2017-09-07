@@ -37,4 +37,6 @@ module.exports = class MemoryProvider extends Map {
       value: setTimeout(() => this.delete(sid), expires).unref()
     })
   }
+
+  quit() {}
 }
