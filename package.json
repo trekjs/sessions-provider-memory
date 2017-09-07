@@ -1,6 +1,6 @@
 {
   "name": "sessions-provider-memory",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Sessions Memory Provider",
   "license": "MIT",
   "repository": "trekjs/sessions-provider-memory",
@@ -16,7 +16,7 @@
     "memory"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">= 6.0.0"
   },
   "files": [
     "LICENSE",
@@ -27,18 +27,31 @@
   "main": "index.js",
   "scripts": {
     "lint": "xo",
+    "precommit": "lint-staged",
     "test": "xo && nyc ava"
   },
   "devDependencies": {
-    "ava": "0.19",
-    "nyc": "10",
-    "request": "2",
-    "request-promise": "4",
-    "trek-engine": "1",
-    "xo": "0.18"
+    "ava": "0.22.0",
+    "eslint-config-prettier": "2.4.0",
+    "husky": "0.14.3",
+    "lint-staged": "4.1.3",
+    "nyc": "11.2.1",
+    "prettier": "1.6.1",
+    "request": "2.81.0",
+    "request-promise": "4.2.1",
+    "trek-engine": "1.0.4",
+    "xo": "0.18.2"
   },
   "ava": {
-    "concurrency": 5
+    "concurrency": 5,
+    "failFast": true
+  },
+  "lint-staged": {
+    "*.js": [
+      "xo",
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
   },
   "nyc": {
     "reporter": [
@@ -48,42 +61,6 @@
     ]
   },
   "xo": {
-    "esnext": true,
-    "envs": [
-      "node",
-      "es6"
-    ],
-    "semicolon": false,
-    "space": true,
-    "ignores": [],
-    "rules": {
-      "curly": 0,
-      "import/no-dynamic-require": 0,
-      "import/no-named-as-default": 0,
-      "max-lines": 0,
-      "no-warning-comments": [
-        "error",
-        {
-          "terms": [
-            "todo",
-            "fixme"
-          ],
-          "location": "anywhere"
-        }
-      ],
-      "object-curly-spacing": [
-        "error",
-        "always",
-        {
-          "arraysInObjects": true,
-          "objectsInObjects": true
-        }
-      ],
-      "space-before-function-paren": [
-        2,
-        "always"
-      ],
-      "yoda": 0
-    }
+    "extends": "prettier"
   }
 }

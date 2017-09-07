@@ -6,9 +6,10 @@
 
 'use strict'
 
-module.exports = class MemoryProvider extends Map {
+const TIMER = Symbol('timer')
 
-  get (sid) {
+module.exports = class MemoryProvider extends Map {
+  get(sid) {
     const sess = super.get(sid)
     if (!sess) return
 
@@ -21,25 +22,19 @@ module.exports = class MemoryProvider extends Map {
     return sess
   }
 
-  set (sid, sess, expires) {
+  set(sid, sess, expires) {
     super.set(sid, sess)
     // Should clear old timer
-    if (sess.__timer__) {
+    if (sess[TIMER]) {
       sess.cookie.expires = new Date() + expires
-      clearTimeout(sess.__timer__)
+      clearTimeout(sess[TIMER])
     }
 
-    const timer = setTimeout(() => this.delete(sid), expires)
-    timer.unref()
-
-    Object.defineProperty(sess, '__timer__', {
+    Object.defineProperty(sess, TIMER, {
       configurable: true,
       enumerable: false,
       writable: true,
-      value: timer
+      value: setTimeout(() => this.delete(sid), expires).unref()
     })
   }
-
-  quit () {}
-
 }
